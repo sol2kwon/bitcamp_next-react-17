@@ -1,6 +1,6 @@
-import React, {useState} from 'react';
-import { useDispatch } from 'react-redux';
-import { userActions } from '../../redux/reducers/userReducer.ts';
+import  React,{useState} from 'react';
+import {useDispatch} from 'react-redux';
+import {userActions} from '@/redux/reducers/userReducer.ts';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -31,14 +31,12 @@ function Copyright(props) {
 const theme = createTheme();
 
 export default function Login(){
-    const [login, setLogin] =useState({
-        userid:'', password:''
-    })
-    const dispatch = useDispatch()
+  const [user, setUser] = useState({});
+  const dispatch = useDispatch()
     const handleChange = e =>{
         e.preventDefault()
         const{name, value} = e.target;
-        setLogin({...login,[name]: value})
+        setUser({...user,[name]: value})
     }
   return (
     <ThemeProvider theme={theme}>
@@ -62,9 +60,9 @@ export default function Login(){
           <Box component="form"  noValidate sx={{ mt: 1 }} onSubmit={
             e => {
                 e.preventDefault()
-                dispatch(userActions.loginRequest(login))
-                setLogin({
-                    userid:'', password:''
+                dispatch(userActions.joinRequest(user))
+                setUser({
+                    userid:'', password:'', email:'', name:'', phone:'', birth:'', address:''
                 })
             }
         }>
